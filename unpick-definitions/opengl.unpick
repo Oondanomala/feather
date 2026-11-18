@@ -156,40 +156,38 @@ constant gl_string org/lwjgl/opengl/GL11 GL_VENDOR
 constant gl_string org/lwjgl/opengl/GL11 GL_RENDERER
 constant gl_string org/lwjgl/opengl/GL11 GL_VERSION
 
+
+# LWJGL
+
+target_method org/lwjgl/opengl/GL11 glEnable (I)V
+	param 0 gl_state
+target_method org/lwjgl/opengl/GL11 glDisable (I)V
+	param 0 gl_state
+
+target_method org/lwjgl/opengl/GL11 glClear (I)V
+	param 0 gl_attrib_flag
+
 target_method org/lwjgl/opengl/GL11 glBlendFunc (II)V
 	param 0 gl_blend_factor
 	param 1 gl_blend_factor
+target_method org/lwjgl/opengl/GL11 glDepthFunc (I)V
+	param 0 gl_compare_func
+target_method org/lwjgl/opengl/GL11 glAlphaFunc (I)V
+	param 0 gl_compare_func
+target_method org/lwjgl/opengl/GL11 glAlphaFunc (IF)V
+	param 0 gl_compare_func
 
 target_method org/lwjgl/opengl/GL11 glMatrixMode (I)V
 	param 0 gl_int
 
-target_method org/lwjgl/opengl/GL11 glEnable (I)V
-	param 0 gl_state
-
-target_method org/lwjgl/opengl/GL11 glDisable (I)V
-	param 0 gl_state
-
-target_method org/lwjgl/opengl/GL11 glDepthFunc (I)V
-	param 0 gl_compare_func
-
-target_method org/lwjgl/opengl/GL11 glAlphaFunc (I)V
-	param 0 gl_compare_func
-
-target_method org/lwjgl/opengl/GL11 glAlphaFunc (IF)V
-	param 0 gl_compare_func
-
 target_method org/lwjgl/opengl/GL11 glCullFace (I)V
 	param 0 gl_int
-
-target_method org/lwjgl/opengl/GL11 glClear (I)V
-	param 0 gl_attrib_flag
 
 target_method org/lwjgl/opengl/GL11 glShadeModel (I)V
 	param 0 gl_shade_model
 
 target_method org/lwjgl/opengl/GL11 glLightModel (ILjava/nio/FloatBuffer;)V
 	param 0 gl_int
-
 target_method org/lwjgl/opengl/GL11 glLight (IILjava/nio/FloatBuffer;)V
 	param 0 gl_light
 	param 1 gl_int
@@ -200,11 +198,9 @@ target_method org/lwjgl/opengl/GL11 glColorMaterial (II)V
 
 target_method org/lwjgl/opengl/GL11 glFogf (IF)V
 	param 0 gl_int
-
 target_method org/lwjgl/opengl/GL11 glFogi (II)V
 	param 0 gl_int
 	param 1 gl_fog_param
-
 target_method org/lwjgl/opengl/GL11 glFog (ILjava/nio/FloatBuffer;)V
 	param 0 gl_int
 
@@ -218,22 +214,19 @@ target_method org/lwjgl/opengl/GL11 glTexParameteri (III)V
 	param 0 gl_tex_target
 	param 1 gl_tex_param
 	param 2 gl_tex_value
-
-target_method org/lwjgl/opengl/GL11 glGetTexParameteri (II)I
-	param 0 gl_tex_target
-	param 1 gl_tex_param
-
 target_method org/lwjgl/opengl/GL11 glTexParameterf (IIF)V
 	param 0 gl_tex_target
 	param 1 gl_tex_param
 	param 2 gl_tex_value
+target_method org/lwjgl/opengl/GL11 glGetTexParameteri (II)I
+	param 0 gl_tex_target
+	param 1 gl_tex_param
 
 target_method org/lwjgl/opengl/GL11 glTexImage2D (IIIIIIIILjava/nio/IntBuffer;)V
 	param 0 gl_tex_target
 	param 2 gl_tex_format
 	param 6 gl_pixel_format
 	param 7 gl_pixel_type
-
 target_method org/lwjgl/opengl/GL11 glTexSubImage2D (IIIIIIIILjava/nio/IntBuffer;)V
 	param 0 gl_tex_target
 	param 6 gl_pixel_format
@@ -247,52 +240,37 @@ target_method org/lwjgl/opengl/GL11 glGetString (I)Ljava/lang/String;
 
 target_method org/lwjgl/opengl/ARBOcclusionQuery glBeginQueryARB (II)V
 	param 0 gl_occlusion_query_target
-
 target_method org/lwjgl/opengl/ARBOcclusionQuery glEndQueryARB (I)V
 	param 0 gl_occlusion_query_target
-
 target_method org/lwjgl/opengl/ARBOcclusionQuery glGetQueryObjectuARB (IILjava/nio/IntBuffer;)V
 	param 1 gl_occlusion_query_parameter
 
-target_method net/minecraft/client/render/platform/GLX blendFuncSeparate (IIII)V
-	param 0 gl_blend_factor
-	param 1 gl_blend_factor
-	param 2 gl_blend_factor
-	param 3 gl_blend_factor
+
+# GlStateManager
 
 ### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager blendFunc (II)V
 	param 0 gl_blend_factor
 	param 1 gl_blend_factor
-
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager blendFuncSeparate (IIII)V
 	param 0 gl_blend_factor
 	param 1 gl_blend_factor
 	param 2 gl_blend_factor
 	param 3 gl_blend_factor
-
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager depthFunc (I)V
 	param 0 gl_compare_func
-
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager alphaFunc (IF)V
 	param 0 gl_compare_func
 
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager fogMode (I)V
 	param 0 gl_fog_param
 
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager cullFace (I)V
 	param 0 gl_int
 
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager shadeModel (I)V
 	param 0 gl_shade_model
 
-### 14w26a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager colorMaterial (II)V
 	param 0 gl_int
 	param 1 gl_int
@@ -301,35 +279,38 @@ target_method net/minecraft/client/render/platform/GlStateManager colorMaterial 
 target_method net/minecraft/client/render/platform/GlStateManager clear (I)V
 	param 0 gl_attrib_flag
 
-### 14w28a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager logicOp (I)V
 	param 0 gl_logic_op
 
-### 14w28a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager matrixMode (I)V
 	param 0 gl_int
 
 ### 15w51a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager lightModel (ILjava/nio/FloatBuffer;)V
 	param 0 gl_int
-
-### 15w51a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager light (IILjava/nio/FloatBuffer;)V
 	param 0 gl_int
 	param 1 gl_int
 
-### 15w51a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager texParameter (III)V
 	param 0 gl_tex_target
 	param 1 gl_tex_param
 	param 2 gl_tex_value
 
-### 15w51a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager texParameter (IIF)V
 	param 0 gl_tex_target
 	param 1 gl_tex_param
 	param 2 gl_tex_value
 
-### 15w51a .. 18w43b
 target_method net/minecraft/client/render/platform/GlStateManager getString (I)Ljava/lang/String;
 	param 0 gl_string
+
+
+# Misc game code
+
+### 13w36a-1234 .. 18w43c
+target_method net/minecraft/client/render/platform/GLX blendFuncSeparate (IIII)V
+	param 0 gl_blend_factor
+	param 1 gl_blend_factor
+	param 2 gl_blend_factor
+	param 3 gl_blend_factor
